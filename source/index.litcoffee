@@ -43,13 +43,13 @@ gulp
       Evented : require './evented'
 
 ## Benchmark
-###  [JSPERF][jsperf-url]
+**[JSPERF][jsperf-url]**
 
 ## LICENSE
 
 **[MIT](LICENSE)**
 
-###VERSION
+## VERSION
 **0.0.1**
 
 [travis-image]: https://travis-ci.org/nhz-io/ecl.svg
