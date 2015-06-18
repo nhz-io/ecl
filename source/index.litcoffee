@@ -3,19 +3,35 @@
 ## Evented Components Library [![Build Status][travis-image]][travis-url]
 [![NPM][npm-image]][npm-url]
 
-## Install
-```
-npm install --save ecl
-```
+Instant hierarchical tree structure with event delivery mechanism.
+
+## Exports
+
+    module.exports =
+      Base    : require './base'
+      Node    : require './node'
+      Event   : require './event'
+      Evented : require './evented'
+
+## Classes
+* [Base][Base] - superclass
+* [Node][Node] - hierarchy
+* [Event][Event] - container
+* [Evented][Evented] - broadcaster/dispatcher/receiver
+
+## [Tests][Tests]
+* [Base][BaseTest]
+* [Node][NodeTest]
+* [Event][EventTest]
+* [Evented][EventedTest]
 
 ## Browser
 * [ecl.js][dist-browser-js-url]
 * [ecl.min.js][min-dist-browser-js-url]
 
-## Usage
-
-```coffeescript
-ecl = require 'ecl'
+## Node
+```
+npm install --save ecl
 ```
 
 ## Build
@@ -29,15 +45,12 @@ gulp
 ## Benchmark
 ###  [JSPERF][jsperf-url]
 
-LICENSE
--------
-#### [MIT](LICENSE)
+## LICENSE
 
-VERSION
--------
+**[MIT](LICENSE)**
 
-#### 0.0.1
-* Initial commit
+###VERSION
+**0.0.1**
 
 [travis-image]: https://travis-ci.org/nhz-io/ecl.svg
 [travis-url]: https://travis-ci.org/nhz-io/ecl
@@ -49,3 +62,14 @@ VERSION
 
 [dist-browser-js-url]: https://raw.githubusercontent.com/nhz-io/cnl/master/ecl.js
 [min-dist-browser-js-url]: https://raw.githubusercontent.com/nhz-io/cnl/master/cnl.min.js
+
+[Base]: ./base.litcoffee
+[Node]: ./node.litcoffee
+[Event]: ./event.litcoffee
+[Evented]: ./evented.litcoffee
+
+[Tests]: ./test/index.litcoffee
+[BaseTest]: ./test/base.litcoffee
+[NodeTest]: ./test/base.litcoffee
+[EventTest]: ./test/event.litcoffee
+[EventedTest]: ./test/evented.litcoffee
