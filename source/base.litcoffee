@@ -1,8 +1,6 @@
 # CLASS: Base
 
-All classes extend this.
-Primary function of this class is to serve as common base
-for the rest of the classes and to initialize a private object **#___runtime**
+Base superclass.
 
     module.exports = class Base
 
@@ -10,11 +8,19 @@ for the rest of the classes and to initialize a private object **#___runtime**
 
 **new Base()**
 
-Creates [Base][Base] instance. Call `super` from descendant class
-if **___runtime** is required.
+Creates [Base][Base] instance. Initializes **#___runtime* object.
 
-      constructor: -> Object.defineProperty this, '___runtime',
-        enumerable:no, writable:no, configurable:no, value:{}
+      constructor: (args) ->
+
+and copies contents of the **args** into the instance.
+
+        this[key] = value for own key, value of args
+
+Creates a private property **#___runtime** and uses either args.___runtime or an empty
+object as it's initial value.
+
+        Object.defineProperty this, '___runtime',
+          enumerable:no, writable:no, configurable:no, value:args?.___runtime or {}
 
 ## PROPERTIES
 
