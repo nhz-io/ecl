@@ -13,7 +13,6 @@ $ =
   collapse      :require 'bundle-collapser/plugin'
   source        :require 'vinyl-source-stream'
   buffer        :require 'vinyl-buffer'
-  packer        :require 'gulp-packer'
   streamify     :require 'gulp-streamify'
   map           :require 'map-stream'
 
@@ -75,16 +74,7 @@ $.gulp.task 'uglify', [ 'build', 'test' ], ->
     .pipe $.uglify()
     .pipe $.gulp.dest './'
 
-$.gulp.task 'pack', [ 'build', 'test' ], ->
-  $.browserify entries: "#{_.build}/#{_.browserify}.js", debug:'false', insertGlobals:false
-    .plugin $.collapse
-    .bundle()
-    .pipe $.source "#{_.browserify}.pack.js"
-    .pipe $.buffer()
-    .pipe $.streamify $.packer base62:true, shrink:true
-    .pipe $.gulp.dest './'
-
-$.gulp.task 'dist', [ 'build', 'test', 'browserify', 'uglify', 'pack'], ->
+$.gulp.task 'dist', [ 'build', 'test', 'browserify', 'uglify'], ->
   $.gulp
     .src [ "#{_.build}/**", "!#{_.build}/#{_.browserify}.js", "!#{_.build}/test{,/**}" ]
     .pipe $.gulp.dest _.dist
