@@ -33,4 +33,3 @@ and writable set to **false**.
 [Base]: ./base.litcoffee
 [Object]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object
 [String]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
-

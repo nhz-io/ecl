@@ -9,9 +9,9 @@ Event broadcaster, dispatcher and receiver
 
 **new Evented(args)**
 
-Creates [Evented][Evented] instance. 
+Creates [Evented][Evented] instance.
 
-      constructor: -> 
+      constructor: -> super
 
 ### PARAMETERS
 **args**
@@ -31,4 +31,3 @@ Creates [Evented][Evented] instance.
 [Evented]: ./evented.litcoffee
 [Object]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object
 [String]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
-

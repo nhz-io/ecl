@@ -1,6 +1,6 @@
 # CLASS: Event
 
-    module.exports = class Base
+    module.exports = class Event extends require './base'
 
 ## CONSTRUCTOR
 
@@ -9,9 +9,9 @@
 **new Event(args)**
 **new Event(args, callback)**
 
-Creates [Event][Event] instance. 
+Creates [Event][Event] instance.
 
-      constructor: -> 
+      constructor: -> super
 
 ### PARAMETERS
 **type**
@@ -36,4 +36,3 @@ Creates [Event][Event] instance.
 [Base]: ./base.litcoffee
 [Object]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object
 [String]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
-

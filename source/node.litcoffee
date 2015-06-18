@@ -11,7 +11,7 @@ Hierarchical tree structure.
 
 Creates [Node][Node] instance.
 
-      constructor: ->
+      constructor: -> super
 
 ### PARAMETERS
 **args**
@@ -31,4 +31,3 @@ Creates [Node][Node] instance.
 [Node]: ./node.litcoffee
 [Object]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object
 [String]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
-
