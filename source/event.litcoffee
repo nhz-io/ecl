@@ -30,9 +30,6 @@ Creates [Event][Event] instance.
 
 ## METHODS
 
-### #toString()
-* Returns: [String][String] - `'[object Event]'`
-
 [Base]: ./base.litcoffee
 [Object]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object
 [String]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String

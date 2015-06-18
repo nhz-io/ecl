@@ -24,9 +24,6 @@ Creates [Evented][Evented] instance.
 
 ## METHODS
 
-### #toString()
-* Returns: [String][String] - `'[object Evented]'`
-
 [Node]: ./node.litcoffee
 [Evented]: ./evented.litcoffee
 [Object]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object

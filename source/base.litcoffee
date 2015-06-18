@@ -25,11 +25,6 @@ Private property which serves as a heap of data that should not
 be exposed on the instance. Created with enumerable, configurable
 and writable set to **false**.
 
-## METHODS
-
-### #toString()
-* Returns: [String][String] - `'[object Base]'`
-
 [Base]: ./base.litcoffee
 [Object]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object
 [String]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String

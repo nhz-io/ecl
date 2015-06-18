@@ -24,9 +24,6 @@ Creates [Node][Node] instance.
 
 ## METHODS
 
-### #toString()
-* Returns: [String][String] - `'[object Node]'`
-
 [Base]: ./base.litcoffee
 [Node]: ./node.litcoffee
 [Object]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object
