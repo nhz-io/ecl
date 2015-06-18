@@ -3,27 +3,7 @@
 ## Evented Components Library [![Build Status][travis-image]][travis-url]
 [![NPM][npm-image]][npm-url]
 
-Instant hierarchical tree structure with event delivery mechanism.
-
-## Exports
-
-    module.exports =
-      Base    : require './base'
-      Node    : require './node'
-      Event   : require './event'
-      Evented : require './evented'
-
-## Classes
-* [Base][Base] - superclass
-* [Node][Node] - hierarchy
-* [Event][Event] - container
-* [Evented][Evented] - broadcaster/dispatcher/receiver
-
-## [Tests][Tests]
-* [Base][BaseTest]
-* [Node][NodeTest]
-* [Event][EventTest]
-* [Evented][EventedTest]
+**Instant hierarchical tree structure with event delivery mechanism.**
 
 ## Browser
 * [ecl.js][dist-browser-js-url]
@@ -41,6 +21,26 @@ cd ecl
 npm install
 gulp
 ```
+
+## Classes
+* [Base][Base] - superclass
+* [Node][Node] - hierarchy
+* [Event][Event] - container
+* [Evented][Evented] - broadcaster/dispatcher/receiver
+
+## Tests
+* [Base][BaseTest]
+* [Node][NodeTest]
+* [Event][EventTest]
+* [Evented][EventedTest]
+
+## Exports
+
+    module.exports =
+      Base    : require './base'
+      Node    : require './node'
+      Event   : require './event'
+      Evented : require './evented'
 
 ## Benchmark
 ###  [JSPERF][jsperf-url]
@@ -68,7 +68,6 @@ gulp
 [Event]: ./event.litcoffee
 [Evented]: ./evented.litcoffee
 
-[Tests]: ./test/index.litcoffee
 [BaseTest]: ./test/base.litcoffee
 [NodeTest]: ./test/base.litcoffee
 [EventTest]: ./test/event.litcoffee
