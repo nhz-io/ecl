@@ -5,16 +5,16 @@
 
 **Instant hierarchical tree structure with event delivery mechanism.**
 
-## Browser
+### BROWSER
 * [ecl.js][dist-browser-js-url]
 * [ecl.min.js][min-dist-browser-js-url]
 
-## Node
+### NODE
 ```
 npm install --save ecl
 ```
 
-## Build
+### BUILD
 ```
 git clone https://github.com/nhz-io/ecl.git
 cd ecl
@@ -22,19 +22,19 @@ npm install
 gulp
 ```
 
-## Classes
+### CLASSES
 * [Base][Base] - superclass
 * [Node][Node] - hierarchy
 * [Event][Event] - container
 * [Evented][Evented] - broadcaster/dispatcher/receiver
 
-## Tests
+### TESTS
 * [Base][BaseTest]
 * [Node][NodeTest]
 * [Event][EventTest]
 * [Evented][EventedTest]
 
-## Exports
+### EXPORTS
 
     module.exports =
       Base    : require './base'
@@ -42,14 +42,14 @@ gulp
       Event   : require './event'
       Evented : require './evented'
 
-## Benchmark
+### BENCHMARK
 **[JSPERF][jsperf-url]**
 
-## LICENSE
+### LICENSE
 
 **[MIT](LICENSE)**
 
-## VERSION
+### VERSION
 **0.0.1**
 
 [travis-image]: https://travis-ci.org/nhz-io/ecl.svg
