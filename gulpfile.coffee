@@ -75,7 +75,7 @@ $.gulp.task 'uglify', [ 'build', 'test' ], ->
     .pipe $.uglify()
     .pipe $.gulp.dest './'
 
-$.gulp.task 'docco', ['clean', 'lint'], ->
+$.gulp.task 'docco', ['lint'], ->
   $.gulp
     .src [ "#{_.source}/**/*.litcoffee" ]
     .pipe $.buffer()
@@ -90,7 +90,7 @@ $.gulp.task 'docco', ['clean', 'lint'], ->
     .pipe $.docco()
     .pipe $.gulp.dest _.doc
 
-$.gulp.task 'dist', [ 'build', 'test', 'browserify', 'uglify', 'docco'], ->
+$.gulp.task 'dist', [ 'build', 'test', 'browserify', 'uglify'], ->
   $.gulp
     .src [ "#{_.build}/**", "!#{_.build}/#{_.browserify}.js", "!#{_.build}/test{,/**}" ]
     .pipe $.gulp.dest _.dist

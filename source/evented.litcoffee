@@ -40,18 +40,19 @@ Creates [Evented][Evented] instance.
 ### #addListener(type, listener, capture)
 * Returns: [Evented][Evented]
 
-Add a listener (capturing/normal) for the event type. Will not add duplicates. 
+Add a listener (capturing/normal) for the event type. Will not add duplicates.
+
 Will not add listeners if event is not enabled.
 
       addListener: (type, listener, capture = false) ->
 
 Treat the **type** as named arguments if the object was passed
 
-        if typeof type is 'object'  then {type, listener, capture} = type
+        if typeof type is 'object' then {type, listener, capture} = type
 
 If event type is enabled and **listener** is a function
 
-        if @events[type] and typeof listener is 'function'
+        if @events?[type] and typeof listener is 'function'
 
 get the listeners for this type and phase or initialize them if they does not exist
 
@@ -125,15 +126,12 @@ Dispatch the event to listeners.
 
 Make sure event can be dispatched
 
-        unless event.aborted or event.canceled
+        unless event?.aborted or event?.canceled
 
 Find out the event type and if it is enabled
 
           if (type = event?.type) and @events[type]
-
-grab the event phase and correct it to be able to load the listeners.
-
-            phase = (if event.phase > 2 then 2 else event.phase)
+            phase = event.phase
 
 Check if the phase allows dispatching and get the event listeners for event type and phase
 
@@ -159,34 +157,35 @@ the dispatching will stop at that listener.
 
 Process the event, dispatch it to listeners and broadcast to children.
 
-      broadcastEvent: (event) ->
+      broadcastEvent: (event, target) ->
 
 No action will be taken if event has no type. This method
-will initialize fresh events. 
+will initialize fresh events.
+
 Only broadcast events that have a type. Event source will be
 set to this instance if event has no source. Event target
 can be changed by providing it as second argument to broadcast.
 
-        if type = event?.type
-          unless event.aborted or event.done or event.phase is 3
-            event.start()
-            event.source ||= this
-            phase = (event.phase ||= 1)
+        if (type = event?.type) and (event.phase or 0) < 3
+          unless event.aborted or event.___runtime.stopped
+            event.___runtime.source or= this
+            phase = (event.phase or= 1)
 
 If event target is this instance, it means event has reached it's
-destination. Event phase is set to 2 (AT_TARGET)
+destination. Event phase is changed to AT_TARGET (2)
 
             if event.target is this then event.phase = 2
 
-If event phase is 1 (CAPTURING), the event will be dispatched to
-this instance. After that, the event will be dispatched to every
-while the phase remains CAPTURING and event was not aborted.
+If event phase is CAPTURING (1), the event will be dispatched to
+this instance and broadcasted to the children. The broadcast to
+children might be interrupted if event gets canceled or aborted
 
             if event.phase is 1
               @dispatchEvent event
 
               if @children then for child in @children
-                if event.phase is 1 and not event.aborted
+                unless event.aborted or event.___runtime.canceled
+
                   child.broadcastEvent event
                 else break
 
@@ -199,15 +198,14 @@ again.
 
             if event.phase is 2 then @dispatchEvent event
 
-At this point the event has finished it's lifecycle. If event.source
-is this instance, so the event callback will be called if the
-event was not aborted or finished or canceled.
+At this point the event has finished it's lifecycle. If **event.source**
+is this instance, then the event callback will be called.
 
-            if event.source is this
-              unless event.canceled or event.aborted or event.done or event.phase is 3
-                event.callback?.call? this, event
-              event.phase = 3
-              event.finish()
+            if event.___runtime.source is this and event.phase < 4
+
+              event.callback?.call? this, event
+              event.phase = 4
+
         return this
 
 #### PARAMETERS
