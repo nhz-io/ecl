@@ -54,3 +54,7 @@ the children list. If there are no children left the #children should be deleted
 
           it 'should delete the empty #children', ->
             should((new Node).appendChild(c = {}).removeChild(c).children).not.be.ok
+
+[Node#constructor]: ../node.litcoffee#constructor
+[Node#appendChild]: ../node.litcoffee#appendchildchild
+[Node#removeChild]: ../node.litcoffee#removechildchild
