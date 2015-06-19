@@ -44,8 +44,8 @@ gulp
 
 [jsperf-url]: http://jsperf.com/ecl
 
-[dist-browser-js-url]: https://raw.githubusercontent.com/nhz-io/cnl/master/ecl.js
-[min-dist-browser-js-url]: https://raw.githubusercontent.com/nhz-io/cnl/master/cnl.min.js
+[dist-browser-js-url]: https://raw.githubusercontent.com/nhz-io/ecl/master/ecl.js
+[min-dist-browser-js-url]: https://raw.githubusercontent.com/nhz-io/ecl/master/ecl.min.js
 
 [Source]: ./source/index.litcoffee
 [Tests]: ./source/tests/index.litcoffee
