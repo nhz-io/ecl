@@ -34,7 +34,7 @@ Creates [Node][Node] instance.
 ### #appendChild(child)
 * Returns: [Node][Node]
 
-Appends the **child** to the **#children#.
+Appends the **child** to the **#children**.
 
       appendChild: (child) ->
 
@@ -89,9 +89,14 @@ make the **child** forget about it's parent
 
             delete child.parent
 
-and remove the **child** from **#children**
+and remove the **child** from **#children**.
+
             @children.splice idx, 1
+
+Delete the **#children** if it is empty.
+
           delete @children if @children.length is 0
+
         return this
 
 #### PARAMETERS
