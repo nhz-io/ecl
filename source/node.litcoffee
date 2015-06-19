@@ -38,15 +38,15 @@ Appends the **child** to the **#children**.
 
       appendChild: (child) ->
 
-If the **child** is another [Node][Node],
+If the **child** is not this instance
 
-        if child instanceof Node and this isnt child
+        if child isnt this
 
-initializing the **#children** if necessary.
+initialize the **#children** if necessary.
 
           @children ||= []
 
-If child isnt already int the children list,
+If **child** isnt already int the children list,
 
           if -1 is @children.indexOf child
 
@@ -69,29 +69,23 @@ Finally, append the **child** to the **#children** list.
 **child**
 * Type: [Node][Node] - The child to append.
 
----
- 
 ### #removeChild(child)
 
 Removes the **child** from the **#children**.
 
       removeChild: (child) ->
 
-If the **child** is [Node][Node] and we have any children at all,
+If there are any children and the **child** belongs to this parent
 
-        if child instanceof Node and @children
-
-and the **child** belongs to this parent
-
-          if -1 isnt idx = @children.indexOf child
-
+        if @children?.length and -1 isnt idx = @children.indexOf child
+          
 make the **child** forget about it's parent
 
-            delete child.parent
+          delete child.parent
 
 and remove the **child** from **#children**.
 
-            @children.splice idx, 1
+          @children.splice idx, 1
 
 Delete the **#children** if it is empty.
 
