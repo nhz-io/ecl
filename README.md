@@ -20,7 +20,7 @@ npm install --save ecl
 
 ### BUILD
 ```
-git clone https://github.com/nhz-io/ecl.git
+git clone https://github.com/NHZio/ecl.git
 cd ecl
 npm install
 gulp
@@ -36,16 +36,16 @@ gulp
 ### VERSION
 **0.0.1**
 
-[travis-image]: https://travis-ci.org/nhz-io/ecl.svg
-[travis-url]: https://travis-ci.org/nhz-io/ecl
+[travis-image]: https://travis-ci.org/NHZio/ecl.svg
+[travis-url]: https://travis-ci.org/NHZio/ecl
 
 [npm-image]: https://nodei.co/npm/ecl.png
 [npm-url]: https://nodei.co/npm/ecl
 
 [jsperf-url]: http://jsperf.com/ecl
 
-[dist-browser-js-url]: https://raw.githubusercontent.com/nhz-io/ecl/master/ecl.js
-[min-dist-browser-js-url]: https://raw.githubusercontent.com/nhz-io/ecl/master/ecl.min.js
+[dist-browser-js-url]: https://raw.githubusercontent.com/NHZio/ecl/master/ecl.js
+[min-dist-browser-js-url]: https://raw.githubusercontent.com/NHZio/ecl/master/ecl.min.js
 
 [Source]: ./source/index.litcoffee
 [Tests]: ./source/test/index.litcoffee
