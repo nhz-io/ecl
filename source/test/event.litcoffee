@@ -1,4 +1,4 @@
-# Event Event Class
+# Test Event Class
 
     should = require 'should'
     module.exports = (Event, name = 'Event') ->
