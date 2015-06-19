@@ -44,8 +44,8 @@
 in attempt to reach the event target and get dispatched to listeners.</p>
 <p>On their travel path, the events are being captured and dispatched 
 to the capturing listeners.</p>
-<p>After the event has reached the target,  it might start bubbling up
-the hierarchy tree depending on the settings.</p>
+<p>After the event has reached it’s target or there is nowhere to broadcast the
+event anymore, the event callback should be called.</p>
 <p>There are three ways to control event propagation</p>
 <ul>
 <li><strong>Cancel</strong> - stop the current dispatcher</li>
