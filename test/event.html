@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>Test Event Class</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="../docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+    <ul class="sections">
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              <h1 id="test-event-class">Test Event Class</h1>
+<ul>
+<li>Parent: <a href="./index.html">Test</a></li>
+</ul>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>should = <span class="hljs-built_in">require</span> <span class="hljs-string">'should'</span>
+<span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-params">(Event, name = <span class="hljs-string">'Event'</span>)</span> -&gt;</span>
+  describe name, <span class="hljs-function">-&gt;</span>
+    it <span class="hljs-string">'should be a class'</span>, <span class="hljs-function">-&gt;</span> Event.should.be.a.class
+
+    describe <span class="hljs-string">'#constructor()'</span>, <span class="hljs-function">-&gt;</span>
+      it <span class="hljs-string">'should return an instance of Event'</span>, <span class="hljs-function">-&gt;</span>
+        (<span class="hljs-keyword">new</span> Event).should.be.an.<span class="hljs-keyword">instanceof</span> Event</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>The Event <a href="../base.html#constructor">constructor</a> should set the <strong>#type</strong>
+property, creation <strong>#timestamp</strong> and the <strong>#callback</strong></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>      it <span class="hljs-string">'should set the event type'</span>, <span class="hljs-function">-&gt;</span>
+        (<span class="hljs-keyword">new</span> Event <span class="hljs-string">'test'</span>).type.should.be.equal <span class="hljs-string">'test'</span>
+
+      it <span class="hljs-string">'should set the timestamp'</span>, <span class="hljs-function">-&gt;</span>
+        (<span class="hljs-keyword">new</span> Event <span class="hljs-attribute">timestamp</span>:<span class="hljs-literal">true</span>).timestamp.should.be.a.Number
+
+      it <span class="hljs-string">'should set the callback'</span>, <span class="hljs-function">-&gt;</span>
+        (<span class="hljs-keyword">new</span> Event <span class="hljs-string">'test'</span>, (cb = <span class="hljs-function">-&gt;</span>)).callback.should.be.equal cb</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>The <a href="../event.html#cancel">#cancel()</a> method should set #___runtime.cancel to <code>true</code></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    describe <span class="hljs-string">'#cancel()'</span>, <span class="hljs-function">-&gt;</span>
+      it <span class="hljs-string">'should return the event'</span>, <span class="hljs-function">-&gt;</span>
+        (e = <span class="hljs-keyword">new</span> Event).cancel().should.be.equal e
+
+      it <span class="hljs-string">'should set the cancel flag'</span>, <span class="hljs-function">-&gt;</span>
+        (<span class="hljs-keyword">new</span> Event).cancel().___runtime.cancel.should.be.equal <span class="hljs-literal">true</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>The <a href="../event.html#stop">#stop()</a> method should set #___runtime.stop to <code>true</code></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    describe <span class="hljs-string">'#stop()'</span>, <span class="hljs-function">-&gt;</span>
+      it <span class="hljs-string">'should return the event'</span>, <span class="hljs-function">-&gt;</span>
+        (e = <span class="hljs-keyword">new</span> Event).stop().should.be.equal e
+
+      it <span class="hljs-string">'should set the stop flag'</span>, <span class="hljs-function">-&gt;</span>
+        (<span class="hljs-keyword">new</span> Event).stop().___runtime.stop.should.be.equal <span class="hljs-literal">true</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>The <a href="../event.html#abort">#abort()</a> method should set #aborted to <code>true</code></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    describe <span class="hljs-string">'#abort()'</span>, <span class="hljs-function">-&gt;</span>
+      it <span class="hljs-string">'should return the event'</span>, <span class="hljs-function">-&gt;</span>
+        (e = <span class="hljs-keyword">new</span> Event).abort().should.be.equal e
+
+      it <span class="hljs-string">'should set the abort flag'</span>, <span class="hljs-function">-&gt;</span>
+        (<span class="hljs-keyword">new</span> Event).abort().aborted.should.be.equal <span class="hljs-literal">true</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              
+            </div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

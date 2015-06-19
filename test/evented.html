@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>Test Evented Class</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="../docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+    <ul class="sections">
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              <h1 id="test-evented-class">Test Evented Class</h1>
+<ul>
+<li>Parent: <a href="./index.html">Test</a></li>
+</ul>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>should = <span class="hljs-built_in">require</span> <span class="hljs-string">'should'</span>
+Node = <span class="hljs-built_in">require</span> <span class="hljs-string">'../node'</span>
+Event = <span class="hljs-built_in">require</span> <span class="hljs-string">'../event'</span>
+
+<span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-params">(Evented, name = <span class="hljs-string">'Evented'</span>)</span> -&gt;</span>
+  describe name, <span class="hljs-function">-&gt;</span>
+    it <span class="hljs-string">'should be a class'</span>, <span class="hljs-function">-&gt;</span> Evented.should.be.a.class
+    describe <span class="hljs-string">'#constructor()'</span>, <span class="hljs-function">-&gt;</span>
+      it <span class="hljs-string">'should return an instance of Evented'</span>, <span class="hljs-function">-&gt;</span>
+        (<span class="hljs-keyword">new</span> Evented).should.be.an.<span class="hljs-keyword">instanceof</span> Evented
+
+    describe <span class="hljs-string">'#constructor()'</span>, <span class="hljs-function">-&gt;</span>
+      it <span class="hljs-string">'should return an instance of Evented'</span>, <span class="hljs-function">-&gt;</span>
+        (<span class="hljs-keyword">new</span> Evented).should.be.an.<span class="hljs-keyword">instanceof</span> Evented
+
+    describe <span class="hljs-string">'#listeners'</span>, <span class="hljs-function">-&gt;</span>
+      it <span class="hljs-string">'should be an array of two objects'</span>, <span class="hljs-function">-&gt;</span>
+        (<span class="hljs-keyword">new</span> Evented).listeners.length.should.be.equal <span class="hljs-number">2</span>
+        (<span class="hljs-keyword">new</span> Evented).listeners[<span class="hljs-number">0</span>].should.be.an.Object
+        (<span class="hljs-keyword">new</span> Evented).listeners[<span class="hljs-number">1</span>].should.be.an.Object
+
+    describe <span class="hljs-string">'#addListener(type, listener, capture = false)'</span>, <span class="hljs-function">-&gt;</span>
+      it <span class="hljs-string">'should return the evented'</span>, <span class="hljs-function">-&gt;</span>
+        (test = <span class="hljs-keyword">new</span> Evented).addListener().should.be.equal test
+
+      it <span class="hljs-string">'should add event listener to bubbling listeners (default)'</span>, <span class="hljs-function">-&gt;</span>
+        (test = <span class="hljs-keyword">new</span> Evented <span class="hljs-attribute">events</span>:<span class="hljs-attribute">test</span>:<span class="hljs-literal">true</span>)
+          .addListener(<span class="hljs-string">'test'</span>, (listener = <span class="hljs-function">-&gt;</span>)).listeners[<span class="hljs-number">0</span>].test[<span class="hljs-number">0</span>].should.be.equal listener
+
+      it <span class="hljs-string">'should add event listener to bubbling listeners (default) (arguments as object)'</span>, <span class="hljs-function">-&gt;</span>
+        (test = <span class="hljs-keyword">new</span> Evented <span class="hljs-attribute">events</span>:<span class="hljs-attribute">test</span>:<span class="hljs-literal">true</span>)
+          .addListener <span class="hljs-attribute">type</span>:<span class="hljs-string">'test'</span>, <span class="hljs-attribute">listener</span>:(listener = <span class="hljs-function">-&gt;</span>)
+          .listeners[<span class="hljs-number">0</span>].test[<span class="hljs-number">0</span>].should.be.equal listener
+
+      it <span class="hljs-string">'should add event listener to capturing listeners'</span>, <span class="hljs-function">-&gt;</span>
+        (test = <span class="hljs-keyword">new</span> Evented <span class="hljs-attribute">events</span>:<span class="hljs-attribute">test</span>:<span class="hljs-literal">true</span>)
+          .addListener(<span class="hljs-string">'test'</span>, (listener = <span class="hljs-function">-&gt;</span>), <span class="hljs-literal">yes</span>).listeners[<span class="hljs-number">1</span>].test[<span class="hljs-number">0</span>].should.be.equal listener
+
+      it <span class="hljs-string">'should add event listener to capturing listeners (arguments as object)'</span>, <span class="hljs-function">-&gt;</span>
+        (test = <span class="hljs-keyword">new</span> Evented <span class="hljs-attribute">events</span>:<span class="hljs-attribute">test</span>:<span class="hljs-literal">true</span>)
+          .addListener <span class="hljs-attribute">type</span>:<span class="hljs-string">'test'</span>, <span class="hljs-attribute">listener</span>:(listener = <span class="hljs-function">-&gt;</span>), <span class="hljs-attribute">capture</span>:<span class="hljs-literal">yes</span>
+          .listeners[<span class="hljs-number">1</span>].test[<span class="hljs-number">0</span>].should.be.equal listener
+
+      it <span class="hljs-string">'should not add duplicates'</span>, <span class="hljs-function">-&gt;</span>
+        (test = <span class="hljs-keyword">new</span> Evented <span class="hljs-attribute">events</span>:<span class="hljs-attribute">test</span>:<span class="hljs-literal">true</span>)
+          .addListener(<span class="hljs-string">'test'</span>, (listener = <span class="hljs-function">-&gt;</span>))
+          .addListener(<span class="hljs-string">'test'</span>, listener)
+          .listeners[<span class="hljs-number">0</span>].test.length.should.be.equal <span class="hljs-number">1</span>
+
+        (test = <span class="hljs-keyword">new</span> Evented <span class="hljs-attribute">events</span>:<span class="hljs-attribute">test</span>:<span class="hljs-literal">true</span>)
+          .addListener(<span class="hljs-string">'test'</span>, (listener = <span class="hljs-function">-&gt;</span>), <span class="hljs-literal">yes</span>)
+          .addListener(<span class="hljs-string">'test'</span>, listener, <span class="hljs-literal">yes</span>)
+          .listeners[<span class="hljs-number">1</span>].test.length.should.be.equal <span class="hljs-number">1</span>
+
+      it <span class="hljs-string">'should add only functions'</span>, <span class="hljs-function">-&gt;</span>
+        (test = <span class="hljs-keyword">new</span> Evented <span class="hljs-attribute">events</span>:<span class="hljs-attribute">test</span>:<span class="hljs-literal">true</span>)
+          .addListener(<span class="hljs-string">'test'</span>, {}).listeners[<span class="hljs-number">0</span>].should.<span class="hljs-keyword">not</span>.have.property <span class="hljs-string">'test'</span>
+        (test = <span class="hljs-keyword">new</span> Evented <span class="hljs-attribute">events</span>:<span class="hljs-attribute">test</span>:<span class="hljs-literal">true</span>)
+          .addListener(<span class="hljs-string">'test'</span>, {}, <span class="hljs-literal">yes</span>).listeners[<span class="hljs-number">1</span>].should.<span class="hljs-keyword">not</span>.have.property <span class="hljs-string">'test'</span>
+
+    describe <span class="hljs-string">'#removeListener(type, listener, capture = false)'</span>, <span class="hljs-function">-&gt;</span>
+      it <span class="hljs-string">'should return the element'</span>, <span class="hljs-function">-&gt;</span> (test = <span class="hljs-keyword">new</span> Evented).removeListener().should.be.equal test
+
+      it <span class="hljs-string">'should remove event listener from bubbling listeners (default)'</span>, <span class="hljs-function">-&gt;</span>
+        (test = <span class="hljs-keyword">new</span> Evented <span class="hljs-attribute">events</span>:<span class="hljs-attribute">test</span>:<span class="hljs-literal">true</span>)
+          .addListener(<span class="hljs-string">'test'</span>, (listener = <span class="hljs-function">-&gt;</span>))
+          .removeListener(<span class="hljs-string">'test'</span>, listener)
+          .listeners[<span class="hljs-number">0</span>].test.length.should.be.equal <span class="hljs-number">0</span>
+
+      it <span class="hljs-string">'should remove event listener from bubbling listeners (default) (arguments as object)'</span>, <span class="hljs-function">-&gt;</span>
+        (test = <span class="hljs-keyword">new</span> Evented <span class="hljs-attribute">events</span>:<span class="hljs-attribute">test</span>:<span class="hljs-literal">true</span>)
+          .addListener(<span class="hljs-string">'test'</span>, (listener = <span class="hljs-function">-&gt;</span>))
+          .removeListener <span class="hljs-attribute">type</span>:<span class="hljs-string">'test'</span>, <span class="hljs-attribute">listener</span>:listener
+          .listeners[<span class="hljs-number">0</span>].test.length.should.be.equal <span class="hljs-number">0</span>
+
+      it <span class="hljs-string">'should remove event listener from capturing listeners'</span>, <span class="hljs-function">-&gt;</span>
+        (test = <span class="hljs-keyword">new</span> Evented <span class="hljs-attribute">events</span>:<span class="hljs-attribute">test</span>:<span class="hljs-literal">true</span>)
+          .addListener(<span class="hljs-string">'test'</span>, (listener = <span class="hljs-function">-&gt;</span>), <span class="hljs-literal">yes</span>)
+          .removeListener(<span class="hljs-string">'test'</span>, listener, <span class="hljs-literal">yes</span>)
+          .listeners[<span class="hljs-number">1</span>].test.length.should.be.equal <span class="hljs-number">0</span>
+
+      it <span class="hljs-string">'should remove event listener from capturing listeners (arguments as object)'</span>, <span class="hljs-function">-&gt;</span>
+        (test = <span class="hljs-keyword">new</span> Evented <span class="hljs-attribute">events</span>:<span class="hljs-attribute">test</span>:<span class="hljs-literal">true</span>)
+          .addListener(<span class="hljs-string">'test'</span>, (listener = <span class="hljs-function">-&gt;</span>), <span class="hljs-literal">yes</span>)
+          .removeListener <span class="hljs-attribute">type</span>:<span class="hljs-string">'test'</span>, <span class="hljs-attribute">listener</span>:listener, <span class="hljs-attribute">capture</span>:<span class="hljs-literal">yes</span>
+          .listeners[<span class="hljs-number">1</span>].test.length.should.be.equal <span class="hljs-number">0</span>
+
+    describe <span class="hljs-string">'#dispatchEvent(event)'</span>, <span class="hljs-function">-&gt;</span>
+      it <span class="hljs-string">'should return the element'</span>, <span class="hljs-function">-&gt;</span> (test = <span class="hljs-keyword">new</span> Evented).dispatchEvent().should.be.equal test
+      it <span class="hljs-string">'should dispatch the event to bubbling listeners'</span>, <span class="hljs-function">-&gt;</span>
+        count = <span class="hljs-number">0</span>
+        (event = <span class="hljs-keyword">new</span> Event <span class="hljs-string">'test'</span>).phase = <span class="hljs-number">2</span>
+        (<span class="hljs-keyword">new</span> Evented <span class="hljs-attribute">events</span>:<span class="hljs-attribute">test</span>:<span class="hljs-literal">true</span>)
+          .addListener <span class="hljs-string">'test'</span>, <span class="hljs-function">-&gt;</span> count++
+          .addListener <span class="hljs-string">'test'</span>, <span class="hljs-function">-&gt;</span> count++
+          .addListener <span class="hljs-string">'test'</span>, <span class="hljs-function">-&gt;</span> count++
+          .dispatchEvent event
+        count.should.be.equal <span class="hljs-number">3</span>
+
+      it <span class="hljs-string">'should dispatch the event to capturing listeners'</span>, <span class="hljs-function">-&gt;</span>
+        count = <span class="hljs-number">0</span>
+        (event = <span class="hljs-keyword">new</span> Event <span class="hljs-string">'test'</span>).phase = <span class="hljs-number">1</span>
+        (<span class="hljs-keyword">new</span> Evented <span class="hljs-attribute">events</span>:<span class="hljs-attribute">test</span>:<span class="hljs-literal">true</span>)
+          .addListener <span class="hljs-string">'test'</span>, (<span class="hljs-function">-&gt;</span> count++), <span class="hljs-literal">yes</span>
+          .addListener <span class="hljs-string">'test'</span>, (<span class="hljs-function">-&gt;</span> count++), <span class="hljs-literal">yes</span>
+          .addListener <span class="hljs-string">'test'</span>, (<span class="hljs-function">-&gt;</span> count++), <span class="hljs-literal">yes</span>
+          .dispatchEvent event
+        count.should.be.equal <span class="hljs-number">3</span>
+
+      it <span class="hljs-string">'should not dispatch events in any other phase'</span>, <span class="hljs-function">-&gt;</span>
+        pass = <span class="hljs-literal">yes</span>
+        event = <span class="hljs-keyword">new</span> Event <span class="hljs-string">'test'</span>
+        test = <span class="hljs-keyword">new</span> Evented <span class="hljs-attribute">events</span>:<span class="hljs-attribute">test</span>:<span class="hljs-literal">true</span>
+        test
+          .addListener <span class="hljs-string">'test'</span>, (<span class="hljs-function">-&gt;</span> pass = <span class="hljs-literal">no</span>)
+          .addListener <span class="hljs-string">'test'</span>, (<span class="hljs-function">-&gt;</span> pass = <span class="hljs-literal">no</span>), <span class="hljs-literal">yes</span>
+          .dispatchEvent event
+        pass.should.be.ok
+
+        event.phase = <span class="hljs-number">3</span>
+        test.dispatchEvent event
+        pass.should.be.ok
+
+      it <span class="hljs-string">'should not dispatch aborted events'</span>, <span class="hljs-function">-&gt;</span>
+        pass = <span class="hljs-literal">yes</span>
+        (event = <span class="hljs-keyword">new</span> Event <span class="hljs-string">'test'</span>).phase = <span class="hljs-number">1</span>
+        event.abort()
+        test = <span class="hljs-keyword">new</span> Evented <span class="hljs-attribute">events</span>:<span class="hljs-attribute">test</span>:<span class="hljs-literal">true</span>
+        test
+          .addListener <span class="hljs-string">'test'</span>, (<span class="hljs-function">-&gt;</span> pass = <span class="hljs-literal">no</span>)
+          .addListener <span class="hljs-string">'test'</span>, (<span class="hljs-function">-&gt;</span> pass = <span class="hljs-literal">no</span>), <span class="hljs-literal">yes</span>
+          .dispatchEvent event
+        pass.should.be.ok
+
+        event.phase = <span class="hljs-number">2</span>
+        test.dispatchEvent event
+        pass.should.be.ok
+
+      it <span class="hljs-string">'should start the event before dispatching'</span>, <span class="hljs-function">-&gt;</span>
+        pass = <span class="hljs-literal">no</span>
+        test = <span class="hljs-keyword">new</span> Evented <span class="hljs-attribute">events</span>:<span class="hljs-attribute">test</span>:<span class="hljs-literal">true</span>
+        event = <span class="hljs-keyword">new</span> Event <span class="hljs-string">'test'</span>
+        event.phase = <span class="hljs-number">1</span>
+        test
+          .addListener <span class="hljs-string">'test'</span>, <span class="hljs-function">(<span class="hljs-params">(e)</span> -&gt;</span> pass = e.started <span class="hljs-keyword">is</span> <span class="hljs-literal">yes</span>)
+          .addListener <span class="hljs-string">'test'</span>, <span class="hljs-function">(<span class="hljs-params">(e)</span> -&gt;</span> pass = e.started <span class="hljs-keyword">is</span> <span class="hljs-literal">yes</span>), <span class="hljs-literal">yes</span>
+          .dispatchEvent event
+        pass.should.be.ok
+        pass = <span class="hljs-literal">no</span>
+        event.phase = <span class="hljs-number">2</span>
+        test.dispatchEvent event
+        pass.should.be.ok
+
+    describe <span class="hljs-string">'#broadcastEvent(event)'</span>, <span class="hljs-function">-&gt;</span>
+      it <span class="hljs-string">'should return the element'</span>, <span class="hljs-function">-&gt;</span> (test = <span class="hljs-keyword">new</span> Evented).broadcastEvent().should.be.equal test
+
+      it <span class="hljs-string">'should set event phase to capturing if phase is not truthly'</span>, <span class="hljs-function">-&gt;</span>
+        pass = <span class="hljs-literal">no</span>
+        (parent = <span class="hljs-keyword">new</span> Evented <span class="hljs-attribute">events</span>:<span class="hljs-attribute">test</span>:<span class="hljs-literal">true</span>).appendChild(child = <span class="hljs-keyword">new</span> Evented)
+        (event = <span class="hljs-keyword">new</span> Event <span class="hljs-string">'test'</span>)
+        child.broadcastEvent = <span class="hljs-function"><span class="hljs-params">(e)</span> -&gt;</span> pass = (e.phase <span class="hljs-keyword">is</span> <span class="hljs-number">1</span>)
+        parent.broadcastEvent event
+        pass.should.be.ok
+
+      it <span class="hljs-string">'should broadcast the event to children'</span>, <span class="hljs-function">-&gt;</span>
+        pass = <span class="hljs-literal">no</span>
+        (parent = <span class="hljs-keyword">new</span> Evented <span class="hljs-attribute">events</span>:<span class="hljs-attribute">test</span>:<span class="hljs-literal">true</span>).appendChild(child = <span class="hljs-keyword">new</span> Evented)
+        child.broadcastEvent = <span class="hljs-function">-&gt;</span> pass = <span class="hljs-literal">yes</span>
+        parent.broadcastEvent <span class="hljs-keyword">new</span> Event <span class="hljs-string">'test'</span>
+        pass.should.be.ok
+
+      it <span class="hljs-string">'should set the element as the event source if there is no source already'</span>, <span class="hljs-function">-&gt;</span>
+        (test = <span class="hljs-keyword">new</span> Evented <span class="hljs-attribute">events</span>:<span class="hljs-attribute">test</span>:<span class="hljs-literal">true</span>).broadcastEvent(event = <span class="hljs-keyword">new</span> Event <span class="hljs-string">'test'</span>)
+        event.source.should.be.equal test
+
+      it <span class="hljs-string">'should not broadcast the event to children if this element is the target of the event'</span>, <span class="hljs-function">-&gt;</span>
+        pass = <span class="hljs-literal">yes</span>
+        (parent = <span class="hljs-keyword">new</span> Evented <span class="hljs-attribute">events</span>:<span class="hljs-attribute">test</span>:<span class="hljs-literal">true</span>).appendChild(child = <span class="hljs-keyword">new</span> Evented)
+        (event = <span class="hljs-keyword">new</span> Event <span class="hljs-string">'test'</span>).target = parent
+        child.broadcastEvent = <span class="hljs-function">-&gt;</span> pass = <span class="hljs-literal">no</span>
+        parent.broadcastEvent event
+        pass.should.be.ok
+
+      it <span class="hljs-string">'should not broadcast finished event to children'</span>, <span class="hljs-function">-&gt;</span>
+        pass = <span class="hljs-literal">yes</span>
+        (parent = <span class="hljs-keyword">new</span> Evented <span class="hljs-attribute">events</span>:<span class="hljs-attribute">test</span>:<span class="hljs-literal">true</span>).appendChild(child = <span class="hljs-keyword">new</span> Evented)
+        (event = <span class="hljs-keyword">new</span> Event <span class="hljs-string">'test'</span>).phase = <span class="hljs-number">3</span>
+        child.broadcastEvent = <span class="hljs-function">-&gt;</span> pass = <span class="hljs-literal">no</span>
+        parent.broadcastEvent event
+        pass.should.be.ok
+
+      it <span class="hljs-string">'should not broadcast aborted event to children'</span>, <span class="hljs-function">-&gt;</span>
+        pass = <span class="hljs-literal">yes</span>
+        (parent = <span class="hljs-keyword">new</span> Evented <span class="hljs-attribute">events</span>:<span class="hljs-attribute">test</span>:<span class="hljs-literal">true</span>).appendChild(child = <span class="hljs-keyword">new</span> Evented)
+        (event = <span class="hljs-keyword">new</span> Event <span class="hljs-string">'test'</span>).abort()
+        child.broadcastEvent = <span class="hljs-function">-&gt;</span> pass = <span class="hljs-literal">no</span>
+        parent.broadcastEvent event
+        pass.should.be.ok
+
+      it <span class="hljs-string">'should call dispatchEvent on this element before broadcasting it to children'</span>, <span class="hljs-function">-&gt;</span>
+        broadcasted = <span class="hljs-literal">no</span>
+        dispatched = <span class="hljs-literal">no</span>
+        (parent = <span class="hljs-keyword">new</span> Evented <span class="hljs-attribute">events</span>:<span class="hljs-attribute">test</span>:<span class="hljs-literal">true</span>).appendChild(child = <span class="hljs-keyword">new</span> Evented)
+        parent.dispatchEvent = <span class="hljs-function">-&gt;</span> dispatched = <span class="hljs-keyword">not</span> broadcasted
+        child.broadcastEvent = <span class="hljs-function">-&gt;</span> broadcasted = <span class="hljs-literal">yes</span>
+        parent.broadcastEvent <span class="hljs-keyword">new</span> Event <span class="hljs-string">'test'</span>
+        broadcasted.should.be.ok
+        dispatched.should.be.ok
+
+      it <span class="hljs-string">'should not call dispatchEvent if event is finished'</span>, <span class="hljs-function">-&gt;</span>
+        pass = <span class="hljs-literal">yes</span>
+        (parent = <span class="hljs-keyword">new</span> Evented <span class="hljs-attribute">events</span>:<span class="hljs-attribute">test</span>:<span class="hljs-literal">true</span>).dispatchEvent = <span class="hljs-function">-&gt;</span> pass = <span class="hljs-literal">no</span>
+        (event = <span class="hljs-keyword">new</span> Event <span class="hljs-string">'test'</span>).phase = <span class="hljs-number">3</span>
+        parent.broadcastEvent event
+        pass.should.be.ok
+
+      it <span class="hljs-string">'should not call dispatchEvent if event is aborted'</span>, <span class="hljs-function">-&gt;</span>
+        pass = <span class="hljs-literal">yes</span>
+        (parent = <span class="hljs-keyword">new</span> Evented <span class="hljs-attribute">events</span>:<span class="hljs-attribute">test</span>:<span class="hljs-literal">true</span>).dispatchEvent = <span class="hljs-function">-&gt;</span> pass = <span class="hljs-literal">no</span>
+        (event = <span class="hljs-keyword">new</span> Event <span class="hljs-string">'test'</span>).abort()
+        parent.broadcastEvent event
+        pass.should.be.ok
+
+      it <span class="hljs-string">'should call event callback upon completion if event source is this element'</span>, <span class="hljs-function">-&gt;</span>
+        pass = <span class="hljs-literal">no</span>
+        (event = <span class="hljs-keyword">new</span> Event <span class="hljs-string">'test'</span>).callback = <span class="hljs-function">-&gt;</span> pass = <span class="hljs-literal">yes</span>
+        event.target = (test = <span class="hljs-keyword">new</span> Evented <span class="hljs-attribute">events</span>:<span class="hljs-attribute">test</span>:<span class="hljs-literal">true</span>)
+        test.broadcastEvent event
+        pass.should.be.ok
+
+      it <span class="hljs-string">'should not call event callback for finished events'</span>, <span class="hljs-function">-&gt;</span>
+        pass = <span class="hljs-literal">yes</span>
+        (event = <span class="hljs-keyword">new</span> Event <span class="hljs-string">'test'</span>).callback = <span class="hljs-function">-&gt;</span> pass = <span class="hljs-literal">no</span>
+        event.phase = <span class="hljs-number">3</span>
+        event.target = (test = <span class="hljs-keyword">new</span> Evented <span class="hljs-attribute">events</span>:<span class="hljs-attribute">test</span>:<span class="hljs-literal">true</span>)
+        test.broadcastEvent event
+        pass.should.be.ok
+
+      it <span class="hljs-string">'should mark event as finished after calling the event callback'</span>, <span class="hljs-function">-&gt;</span>
+        pass = <span class="hljs-literal">no</span>
+        (event = <span class="hljs-keyword">new</span> Event <span class="hljs-string">'test'</span>).callback = <span class="hljs-function"><span class="hljs-params">(e)</span> -&gt;</span> pass = (e.phase <span class="hljs-keyword">isnt</span> <span class="hljs-number">3</span>)
+        event.target = (test = <span class="hljs-keyword">new</span> Evented <span class="hljs-attribute">events</span>:<span class="hljs-attribute">test</span>:<span class="hljs-literal">true</span>)
+        test.broadcastEvent event
+        pass.should.be.ok
+        event.phase.should.be.equal <span class="hljs-number">3</span>
+        event.done.should.be.ok</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              
+            </div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>
