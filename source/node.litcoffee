@@ -1,5 +1,6 @@
 # CLASS: Node
 * Extends: [Base][Base]
+* Parent: [Index][Parent]
 
 Hierarchical tree structure.
 
@@ -8,6 +9,8 @@ Hierarchical tree structure.
 Instances of [Node][Node] can act as both **parent** and **child**.
 Parents cannot have duplicate children, each child can have one parent.
 There are no cyclic checks, so its not idiot proof. Avoid!
+
+---
 
 ## CONSTRUCTOR
 
@@ -21,6 +24,8 @@ Creates [Node][Node] instance.
 **args**
 * Type: [Object][Object] - named arguments
 
+---
+
 ## PROPERTIES
 
 **#parent**
@@ -28,6 +33,8 @@ Creates [Node][Node] instance.
 
 **#children**
 * Type: [Array][Array] - List of children. Created only if passed in args
+
+---
 
 ## METHODS
 
@@ -71,6 +78,8 @@ Finally, append the **child** to the **#children** list.
 
 ### #removeChild(child)
 
+---
+
 Removes the **child** from the **#children**.
 
       removeChild: (child) ->
@@ -102,3 +111,4 @@ Delete the **#children** if it is empty.
 [Array]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
 [Base]: ./base.litcoffee
 [Node]: ./node.litcoffee
+[Parent]: ./index.litcoffee

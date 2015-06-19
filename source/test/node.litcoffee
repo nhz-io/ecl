@@ -1,4 +1,5 @@
 # Test Node Class
+* Parent: [Test][Parent]
 
     should = require 'should'
     module.exports = (Node, name = 'Node') ->
@@ -58,3 +59,4 @@ the children list. If there are no children left the #children should be deleted
 [Node#constructor]: ../node.litcoffee#constructor
 [Node#appendChild]: ../node.litcoffee#appendchildchild
 [Node#removeChild]: ../node.litcoffee#removechildchild
+[Parent]: ./index.litcoffee

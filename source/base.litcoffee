@@ -1,8 +1,11 @@
 # CLASS: Base
+* Parent: [Index][Parent]
 
 Base superclass.
 
     module.exports = class Base
+
+---
 
 ## CONSTRUCTOR
 
@@ -25,6 +28,8 @@ or an empty object as it's initial value.
           configurable:no
           value:args?.___runtime or {}
 
+---
+
 ## PROPERTIES
 
 ### #___runtime
@@ -37,3 +42,4 @@ and **writable** set to `false`.
 [Base]: ./base.litcoffee
 [Object]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object
 [String]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
+[Parent]: ./index.litcoffee

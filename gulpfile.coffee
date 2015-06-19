@@ -15,6 +15,7 @@ $ =
   buffer        :require 'vinyl-buffer'
   streamify     :require 'gulp-streamify'
   map           :require 'map-stream'
+  docco         :require 'gulp-docco'
 
   extendsRegexp : /((__)?extends?)\s*=\s*function\(child,\s*parent\)\s*\{.+?return\s*child;\s*\}/
 
@@ -74,7 +75,22 @@ $.gulp.task 'uglify', [ 'build', 'test' ], ->
     .pipe $.uglify()
     .pipe $.gulp.dest './'
 
-$.gulp.task 'dist', [ 'build', 'test', 'browserify', 'uglify'], ->
+$.gulp.task 'docco', ['clean', 'lint'], ->
+  $.gulp
+    .src [ "#{_.source}/**/*.litcoffee" ]
+    .pipe $.buffer()
+    .pipe $.map (file, callback) ->
+      links = ''
+      data = (file.contents.toString 'utf8').replace /^(\[.+\]:.+)$/gm, (match, link) ->
+        links += link.replace /^(\[.+?\]:\s*(?!\/\/)[-._a-z0-9\/]+)litcoffee/gmi, "$1html"
+        links += "\n"
+        return ''
+      if links then file.contents = new Buffer data.replace /(^(#{1,6}|(( {4}.*\n*)* {4})).*?$)/gmi, "$1\n#{links}\n"
+      callback null, file
+    .pipe $.docco()
+    .pipe $.gulp.dest _.doc
+
+$.gulp.task 'dist', [ 'build', 'test', 'browserify', 'uglify', 'docco'], ->
   $.gulp
     .src [ "#{_.build}/**", "!#{_.build}/#{_.browserify}.js", "!#{_.build}/test{,/**}" ]
     .pipe $.gulp.dest _.dist

@@ -1,4 +1,5 @@
 # Test Event Class
+* Parent: [Test][Parent]
 
     should = require 'should'
     module.exports = (Event, name = 'Event') ->
@@ -52,3 +53,4 @@ The [#abort()][Event#abort] method should set #aborted to `true`
 [Event#stop]: ../event.litcoffee#stop
 [Event#abort]: ../event.litcoffee#abort
 [Event#constructor]: ../base.litcoffee#constructor
+[Parent]: ./index.litcoffee

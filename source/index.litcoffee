@@ -1,12 +1,14 @@
-# ecl
+# ecl    
 
 ## CLASSES
 * [Base][Base] - superclass
 * [Node][Node] - hierarchy
 * [Event][Event] - container
-* [Evented][Evented] - broadcaster/dispatcher/receiver
+* [Evented][Evented] - broadcaster/dispatcher/receiver    
 
-### EXPORTS
+---
+
+### EXPORTS  
 
     module.exports =
       Base    : require './base'

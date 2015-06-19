@@ -41,7 +41,8 @@
     "run-sequence": "^1.0.2",
     "should": "^5.0.1",
     "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0"
+    "vinyl-source-stream": "^1.1.0",
+    "gulp-docco": "git+https://github.com/nhz-io/gulp-docco"
   },
   "gulpfile": {
     "source": "./source",

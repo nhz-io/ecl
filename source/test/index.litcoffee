@@ -1,4 +1,5 @@
 # ecl tests
+* Parent: [Index][Parent]
 
 ## [Base Test][BaseTest]
 Run on [Base][Base], [Event][Event], [Node][Node] and [Evented][Evented]
@@ -37,3 +38,4 @@ Run on [Node][Node] and [Evented][Evented]
 
 [Evented]: ../evented.litcoffee
 [EventedTest]: ./evented.litcoffee
+[Parent]: ../index.litcoffee

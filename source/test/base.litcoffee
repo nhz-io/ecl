@@ -1,4 +1,5 @@
 # Test Base Class
+* Parent: [Test][Parent]
 
     should = require 'should'
     module.exports = (Base, name = 'Base') ->
@@ -24,3 +25,4 @@ The constructor should also copy everything from the **args** into the instance.
             (new Base a:1, b:2, c:3).should.have.properties a:1, b:2, c:3
 
 [Base#constructor]: ../base.litcoffee#constructor
+[Parent]: ./index.litcoffee

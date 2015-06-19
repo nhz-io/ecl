@@ -1,4 +1,6 @@
 # CLASS: Event
+* Extends: [Base][Base]
+* Parent: [Index][Parent]
 
     module.exports = class Event extends require './base'
 
@@ -17,6 +19,8 @@ There are three ways to control event propagation
 * **Abort** - completely halt event propagation.
 
 When event does not propagate anymore, event **callback** will be called.
+
+---
 
 ## CONSTRUCTOR
 
@@ -72,6 +76,8 @@ with high precision
 * Type: [Number][Number] - override the timestamp
 * Type: [Boolean][Boolean] - set to `true` to enable timestamp calculation
 
+---
+
 ## PROPERTIES
 ### #type
 * Type: [String][String] - type
@@ -88,6 +94,8 @@ with high precision
 ### #aborted
 * Type: [Boolean][Boolean] - aborted flag
 
+---
+
 ## METHODS
 
 ### #cancel()
@@ -99,6 +107,8 @@ Cancel event dispatching
         @___runtime.cancel = true
         return this
 
+---
+
 ### #stop()
 * Returns: [Evented][Evented]
 
@@ -107,6 +117,8 @@ Stop event broadcasting
       stop: ->
         @___runtime.stop = true
         return this
+
+---
 
 ### #abort()
 * Returns: [Evented][Evented]
@@ -126,3 +138,4 @@ Abort event propagation
 [String]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
 [Number]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number
 [Boolean]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+[Parent]: ./index.litcoffee

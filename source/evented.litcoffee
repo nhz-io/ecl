@@ -1,5 +1,6 @@
 # CLASS: Evented
 * Extends: [Node][Node]
+* Parent: [Index][Parent]
 
 Event broadcaster, dispatcher and receiver.
 
@@ -8,22 +9,30 @@ Event broadcaster, dispatcher and receiver.
 
 This class is implements an event delivery mechanism.
 
+---
+
 ## CONSTRUCTOR
 
 **new Evented(args)**
 
 Creates [Evented][Evented] instance.
 
-      constructor: -> super
+      constructor: ->
+        super
+        @listeners = [{}, {}]
 
 ### PARAMETERS
 **args**
 * Type: [Object][Object] - named arguments
 
+---
+
 ## PROPERTIES
 
 ### #
 * Type: [Object][Object]
+
+---
 
 ## METHODS
 
@@ -68,6 +77,8 @@ add the **listener** to listeners if it isnt already there
 **args**
 * Type: [Object][Object] - named arguments
 
+---
+
 ### #removeListener(args)
 ### #removeListener(type, listener, capture)
 * Returns: [Evented][Evented]
@@ -102,6 +113,8 @@ Get the listeners for the event type and phase and remove the **listener** if it
 
 **args**
 * Type: [Object][Object] - named arguments
+
+---
 
 ### #dispatchEvent(event)
 * Returns: [Evented][Evented]
@@ -138,6 +151,8 @@ the dispatching will stop at that listener.
 #### PARAMETERS
 **event**
 * Type: [Event][Event] - event to dispatch
+
+---
 
 ### #broadcastEvent(event)
 * Returns: [Evented][Evented]
@@ -205,3 +220,4 @@ event was not aborted or finished or canceled.
 [Object]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object
 [String]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
 [Function]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function
+[Parent]: ./index.litcoffee
