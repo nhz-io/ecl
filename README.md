@@ -48,4 +48,4 @@ gulp
 [min-dist-browser-js-url]: https://raw.githubusercontent.com/nhz-io/ecl/master/ecl.min.js
 
 [Source]: ./source/index.litcoffee
-[Tests]: ./source/tests/index.litcoffee
+[Tests]: ./source/test/index.litcoffee
