@@ -1,6 +1,8 @@
 # Test Event Class
 * Parent: [Test][Parent]
 
+---
+
     should = require 'should'
     module.exports = (Event, name = 'Event') ->
       describe name, ->

@@ -10,8 +10,8 @@ in attempt to reach the event target and get dispatched to listeners.
 On their travel path, the events are being captured and dispatched 
 to the capturing listeners.
 
-After the event has reached the target,  it might start bubbling up
-the hierarchy tree depending on the settings.
+After the event has reached it's target or there is nowhere to broadcast the
+event anymore, the event callback should be called.
 
 There are three ways to control event propagation
 * **Cancel** - stop the current dispatcher
