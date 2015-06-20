@@ -34,7 +34,7 @@ gulp
 **[MIT](LICENSE)**
 
 ### VERSION
-**0.0.3**
+**0.0.4**
 
 [travis-image]: https://travis-ci.org/nhz-io/ecl.svg
 [travis-url]: https://travis-ci.org/nhz-io/ecl

@@ -8,8 +8,8 @@ docs/
 .editorconfig
 .travis*
 .npmignore
-evented.js
-evented.*.js
+/evented.js
+/evented.*.js
 History.md
 gulpfile.*
 coffeelint.*
